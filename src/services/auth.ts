@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, signOut as firebaseSignOut } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, signOut as firebaseSignOut, type AuthError } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
 const provider = new GoogleAuthProvider();
@@ -8,6 +8,10 @@ export const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider);
     return result.user;
   } catch (error) {
+    // This error is thrown when the user closes the popup, so we can safely ignore it.
+    if ((error as AuthError).code === 'auth/popup-closed-by-user') {
+      return null;
+    }
     console.error("Error signing in with Google: ", error);
     return null;
   }
