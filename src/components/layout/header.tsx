@@ -18,7 +18,7 @@ export function Header() {
         </div>
         <nav>
           {loading ? (
-            <Button disabled>Loading...</Button>
+            <Button disabled size="sm">Loading...</Button>
           ) : user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -46,7 +46,7 @@ export function Header() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <Button onClick={signIn}>Sign in with Google</Button>
+            <Button onClick={signIn} size="sm">Sign in with Google</Button>
           )}
         </nav>
       </div>
