@@ -65,6 +65,7 @@
     "typescript": "^5"
   },
   "overrides": {
-    "tmp": "0.2.4"
+    "tmp": "0.2.4",
+    "@babel/runtime": "7.26.10"
   }
 }
